@@ -51,3 +51,7 @@ zellij/layouts/*.session
 
 # --- LAZYGIT ---
 lazygit/state.yml
+
+# --- DEV FILES ---
+task.md
+dev.md
