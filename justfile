@@ -7,6 +7,16 @@ default:
 audit:
     @bash scripts/dev-env-audit.sh
 
+# Show SSH agent socket, loaded identities, and systemd user service status.
+ssh-agent-status:
+    @env | rg '^SSH_AUTH_SOCK=' || echo "SSH_AUTH_SOCK=<unset>"
+    @ssh-add -l 2>&1 || true
+    @if command -v systemctl >/dev/null 2>&1; then \
+      systemctl --user --no-pager --full status ssh-agent.service 2>&1 | sed -n '1,30p' || true; \
+    else \
+      echo "systemctl not found"; \
+    fi
+
 # Verify the Fish helper function file parses.
 verify-fish:
     @fish -n fish/functions/dev.fish
@@ -15,7 +25,7 @@ verify-fish:
 # Verify zellij layout references and DIFF helper script in the submodule.
 verify-layout:
     @test -f zellij/layouts/dev.kdl
-    @rg -n 'pane name=\"(NVIM|AGENT|REPL / TESTS|DIFF|GIT|AUX)\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"(NVIM|AGENT|DIFF|GIT|AUX)\"' zellij/layouts/dev.kdl >/dev/null
     @rg -n 'dev-diff-pane\.sh' zellij/layouts/dev.kdl >/dev/null
     @bash -n zellij/scripts/dev-diff-pane.sh
     @echo "zellij layout + diff script: OK"
