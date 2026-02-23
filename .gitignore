@@ -1,14 +1,53 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.deb
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+# --- ogólne śmieci ---
+*~
+*.swp
+*.swo
+*.tmp
+*.bak
+*.lock
 
-pkg/
-src/
+# macOS / FS noise (na wypadek pracy na wielu maszynach)
+.DS_Store
+
+# --- NEOVIM ---
+nvim/.cache/
+nvim/tmp/
+nvim/log
+nvim/*.log
+
+# plugin managers
+nvim/lazy-lock.json
+nvim/packer_compiled.lua
+
+# LSP / treesitter / mason
+nvim/mason/
+nvim/site/
+nvim/parsers/
+nvim/spell/
+
+# session / state
+nvim/shada/
+nvim/session/
+nvim/swap/
+nvim/undo/
+nvim/view/
+
+# --- FISH ---
+fish/fish_history
+fish/*.lock
+
+# jeśli używasz fisher:
+fish/functions/fisher.fish
+fish/completions/fisher.fish
+
+# --- KITTY ---
+kitty/kitty.sock
+kitty/*.log
+
+# --- ZELLIJ ---
+zellij/*.kdl.bak
+zellij/*.log
+zellij/layouts/*.session
+
+# --- LAZYGIT ---
+lazygit/state.yml
