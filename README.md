@@ -52,6 +52,14 @@ function dev
 end
 ```
 
+In this repo, the Fish helper is implemented as an autoloaded function:
+
+```
+fish/functions/dev.fish
+```
+
+That keeps `fish/config.fish` simpler and makes the command easy to version and review.
+
 ---
 
 # 4. Layered Architecture
@@ -269,6 +277,14 @@ Continuous mode:
 watch -n 1 'git diff --stat && echo && git diff --color=always'
 ```
 
+Current implementation in this repo:
+
+```
+zellij/scripts/dev-diff-pane.sh
+```
+
+The DIFF pane calls that script from `zellij/layouts/dev.kdl`. It handles a continuous refresh loop, uses `delta` when available, and falls back to plain colored `git diff`.
+
 Purpose:
 
 * immediate visibility of agent changes
@@ -346,6 +362,8 @@ Agents:
 
 # 9. Project Structure
 
+Conceptual per-project structure (the workflow target):
+
 ```
 project/
 ├── .envrc
@@ -355,6 +373,20 @@ project/
 ├── src/
 └── tests/
 ```
+
+Dotfiles repo implementation (this repository):
+
+```
+fish/functions/dev.fish
+justfile
+scripts/dev-env-audit.sh
+templates/project/.envrc
+templates/project/justfile
+zellij/layouts/dev.kdl
+zellij/scripts/dev-diff-pane.sh
+```
+
+Note: `zellij/` is a Git submodule in this repo, so layout/script changes are tracked inside that submodule.
 
 `direnv` guarantees:
 
@@ -371,6 +403,15 @@ templates/project/README.md
 ```
 
 Use these as a baseline so both humans and agents run routine tasks through `just` and rely on `direnv` for environment loading.
+
+If you are setting this up on a new machine, start with the non-interactive checks first:
+
+```bash
+just audit
+just smoke
+```
+
+That gives you a quick “what is missing?” readout before you try to launch the full workspace.
 
 ---
 
@@ -493,3 +534,12 @@ This workflow:
 * preserves human control over code semantics and history
 
 It is optimized for REPL-driven data engineering, patch-based AI collaboration, and high-throughput multi-project work.
+
+## Practical Notes (Current Repo)
+
+- `dev` is implemented as `fish/functions/dev.fish`
+- The root `justfile` provides local verification commands (`audit`, `verify-fish`, `verify-layout`, `smoke`)
+- The Zellij dev layout is `zellij/layouts/dev.kdl` (inside the `zellij` submodule)
+- The DIFF pane helper script is `zellij/scripts/dev-diff-pane.sh` (inside the `zellij` submodule)
+
+This keeps the workflow spec in the README and the executable pieces close to the dotfiles that actually drive the session.
