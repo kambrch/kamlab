@@ -25,7 +25,15 @@ verify-fish:
 # Verify zellij layout references and DIFF helper script in the submodule.
 verify-layout:
     @test -f zellij/layouts/dev.kdl
-    @rg -n 'pane name=\"(NVIM|AGENT|DIFF|GIT|AUX)\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"NVIM\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"AGENT\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"DIFF\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"GIT\"' zellij/layouts/dev.kdl >/dev/null
+    @rg -n 'pane name=\"AUX\"' zellij/layouts/dev.kdl >/dev/null
+    @if rg -n 'pane name=\"REPL / TESTS\"' zellij/layouts/dev.kdl >/dev/null; then \
+      echo "verify-layout: unexpected REPL / TESTS pane present"; \
+      exit 1; \
+    fi
     @rg -n 'dev-diff-pane\.sh' zellij/layouts/dev.kdl >/dev/null
     @bash -n zellij/scripts/dev-diff-pane.sh
     @echo "zellij layout + diff script: OK"

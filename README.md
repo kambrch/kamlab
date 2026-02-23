@@ -186,17 +186,23 @@ Julia:
 
 # 5. Zellij Layout
 
+Current implementation (editor-heavy variant):
+
 ```
 +-------------------+-------------------+
-|       NVIM        |       AGENT       |
-|                   |                   |
-|                   |                   |
-+-------------------+-------------------+
-|   REPL / TESTS    |        DIFF       |
+|                   |       AGENT       |
+|       NVIM        +-------------------+
+|                   |        DIFF       |
 +-------------------+-------------------+
 |        GIT        |        AUX        |
 +-------------------+-------------------+
 ```
+
+Why this variant:
+
+* More space for `nvim`
+* `REPL / TESTS` moved out of the default layout (can be opened ad-hoc when needed)
+* Keeps the core review loop visible (`AGENT`, `DIFF`, `GIT`)
 
 ---
 
@@ -284,6 +290,14 @@ zellij/scripts/dev-diff-pane.sh
 ```
 
 The DIFF pane calls that script from `zellij/layouts/dev.kdl`. It handles a continuous refresh loop, uses `delta` when available, and falls back to plain colored `git diff`.
+
+Default behavior is **compact mode** (stats + file list). This is intentional so minified / very large diffs do not flood the small DIFF pane.
+
+For a full patch in the pane (temporary/manual use):
+
+```bash
+DEV_DIFF_PANE_MODE=full ~/.config/kamlab/zellij/scripts/dev-diff-pane.sh
+```
 
 Purpose:
 
@@ -474,7 +488,7 @@ Stable spatial mapping:
 | Area   | Function                         |
 | ------ | -------------------------------- |
 | Top    | creation (NVIM + AGENT)          |
-| Middle | validation (REPL/TESTS + DIFF)   |
+| Middle | review (DIFF) + editor focus     |
 | Bottom | history & operations (GIT + AUX) |
 
 No “where is what” overhead.
@@ -537,9 +551,10 @@ It is optimized for REPL-driven data engineering, patch-based AI collaboration, 
 
 ## Practical Notes (Current Repo)
 
-- `dev` is implemented as `fish/functions/dev.fish`
+- `dev` is implemented as `fish/functions/dev.fish` and avoids resurrecting exited sessions that trigger "Waiting to run" prompts
 - The root `justfile` provides local verification commands (`audit`, `verify-fish`, `verify-layout`, `smoke`)
+- `justfile` also provides `ssh-agent-status` for debugging SSH agent state
 - The Zellij dev layout is `zellij/layouts/dev.kdl` (inside the `zellij` submodule)
-- The DIFF pane helper script is `zellij/scripts/dev-diff-pane.sh` (inside the `zellij` submodule)
+- The DIFF pane helper script is `zellij/scripts/dev-diff-pane.sh` (inside the `zellij` submodule) and runs in compact mode by default
 
 This keeps the workflow spec in the README and the executable pieces close to the dotfiles that actually drive the session.
