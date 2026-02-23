@@ -1,0 +1,40 @@
+# Template justfile for deterministic human/agent task execution.
+# Customize commands to match your project stack.
+
+set shell := ["bash", "-eu", "-o", "pipefail", "-c"]
+
+default:
+    @just --list
+
+test:
+    @if command -v pytest >/dev/null 2>&1; then \
+      pytest -q; \
+    else \
+      echo "just test: pytest not found (install project test dependencies)"; \
+      exit 1; \
+    fi
+
+lint:
+    @if command -v ruff >/dev/null 2>&1; then \
+      ruff check .; \
+    else \
+      echo "just lint: ruff not found"; \
+      exit 1; \
+    fi
+
+format:
+    @if command -v ruff >/dev/null 2>&1; then \
+      ruff format .; \
+    else \
+      echo "just format: ruff not found"; \
+      exit 1; \
+    fi
+
+run:
+    @if [ -f main.py ]; then \
+      python main.py; \
+    else \
+      echo "just run: customize this recipe for your app entrypoint"; \
+      exit 1; \
+    fi
+

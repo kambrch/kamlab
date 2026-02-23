@@ -362,6 +362,16 @@ project/
 cd project → correct PATH + correct runtime + correct variables
 ```
 
+Template starter files for new projects (kept in this dotfiles repo):
+
+```
+templates/project/.envrc
+templates/project/justfile
+templates/project/README.md
+```
+
+Use these as a baseline so both humans and agents run routine tasks through `just` and rely on `direnv` for environment loading.
+
 ---
 
 # 10. Wayland Integration
