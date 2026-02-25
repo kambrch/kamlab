@@ -6,6 +6,10 @@ keybinds {
     }
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
+        bind "Alt z" {
+            MessagePlugin "autolock" { payload "enable"; };
+            SwitchToMode "Normal";
+        }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
@@ -235,6 +239,10 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "Alt z" {
+            MessagePlugin "autolock" { payload "disable"; };
+            SwitchToMode "Locked";
+        }
         bind "Alt b" {
             LaunchOrFocusPlugin "bookmarks" {
                 floating true
@@ -271,6 +279,7 @@ keybinds {
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
+        bind "Alt Shift z" { MessagePlugin "autolock" { payload "toggle"; }; }
     }
     shared_except "normal" "locked" {
         bind "Enter" "Esc" { SwitchToMode "Normal"; }
@@ -320,10 +329,17 @@ plugins {
     forgot location="file:~/.config/kamlab/zellij/plugins/zellij-forgot.wasm"
     bookmarks location="file:~/.config/kamlab/zellij/plugins/zellij-bookmarks.wasm"
     favs location="file:~/.config/kamlab/zellij/plugins/zellij-favs.wasm"
+    autolock location="file:~/.config/kamlab/zellij/plugins/zellij-autolock.wasm" {
+        is_enabled true
+        triggers "nvim|vim|lazygit|fzf|hx|helix|atuin|zoxide"
+        reaction_seconds "0.2"
+        print_to_log false
+    }
 }
 
 // Plugins to load in the background when a new session starts
 load_plugins {
+  autolock
   // "file:/path/to/my-plugin.wasm"
   // "https://example.com/my-plugin.wasm"
 }
