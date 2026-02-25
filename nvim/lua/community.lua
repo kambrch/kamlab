@@ -16,7 +16,6 @@ return {
   { import = "astrocommunity.color.twilight-nvim" },
   -- colorscheme - using default AstroNvim theme
   -- cheat sheets
-  { import = "astrocommunity.workflow.cheat-sh" },
   { import = "astrocommunity.colorscheme.everforest", enabled = false },
   -- comments
   -- completion

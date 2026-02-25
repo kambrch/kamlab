@@ -49,31 +49,33 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "User AstroFile",
+    main = "nvim-treesitter.configs",
     opts = {
-      enable = true,
-      select = {
-        enable = true,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-          ["aC"] = "@conditional.outer",
-          ["iC"] = "@conditional.inner",
-          ["al"] = "@loop.outer",
-          ["il"] = "@loop.inner",
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+            ["aC"] = "@conditional.outer",
+            ["iC"] = "@conditional.inner",
+            ["al"] = "@loop.outer",
+            ["il"] = "@loop.inner",
+          },
         },
-      },
-      move = {
-        enable = true,
-        goto_next_start = {
-          ["]f"] = "@function.outer",
-          ["]c"] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[f"] = "@function.outer",
-          ["[c"] = "@class.outer",
+        move = {
+          enable = true,
+          goto_next_start = {
+            ["]f"] = "@function.outer",
+            ["]c"] = "@class.outer",
+          },
+          goto_previous_end = {
+            ["[f"] = "@function.outer",
+            ["[c"] = "@class.outer",
+          },
         },
       },
     },
