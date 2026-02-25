@@ -7,7 +7,7 @@ keybinds {
     locked {
         bind "Ctrl g" { SwitchToMode "Normal"; }
         bind "Alt z" {
-            MessagePlugin "autolock" { payload "enable"; };
+            MessagePlugin "autolock" { payload "disable"; };
             SwitchToMode "Normal";
         }
     }
@@ -127,9 +127,10 @@ keybinds {
             SwitchToMode "Normal"
         }
         bind "t" {
-            LaunchOrFocusPlugin "multitask" {
-                floating true
-                move_to_focused_tab true
+            Run "bash" {
+                args "-lc"
+                args "$HOME/.config/kamlab/zellij/scripts/multitask_run.sh"
+                close_on_exit true
             };
             SwitchToMode "Normal"
         }
@@ -152,7 +153,7 @@ keybinds {
             LaunchOrFocusPlugin "favs" {
                 floating true
                 move_to_focused_tab true
-                cache_dir "/home/kamash/.config/kamlab/zellij/plugins/zellij-favs-cache.kdl"
+                cache_dir "/home/kamash/.config/kamlab/zellij/state/zellij-favs-cache.kdl"
             };
             SwitchToMode "Normal"
         }
@@ -226,9 +227,10 @@ keybinds {
             SwitchToMode "Normal"
         }
         bind "Alt t" {
-            LaunchOrFocusPlugin "multitask" {
-                floating true
-                move_to_focused_tab true
+            Run "bash" {
+                args "-lc"
+                args "$HOME/.config/kamlab/zellij/scripts/multitask_run.sh"
+                close_on_exit true
             };
             SwitchToMode "Normal"
         }
@@ -255,7 +257,7 @@ keybinds {
             LaunchOrFocusPlugin "favs" {
                 floating true
                 move_to_focused_tab true
-                cache_dir "/home/kamash/.config/kamlab/zellij/plugins/zellij-favs-cache.kdl"
+                cache_dir "/home/kamash/.config/kamlab/zellij/state/zellij-favs-cache.kdl"
             };
             SwitchToMode "Normal"
         }
