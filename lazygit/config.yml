@@ -1,31 +1,27 @@
 git:
   autoFetch: true
-
 customCommands:
   - key: "Y"
     context: "files"
     description: "Export staged patch to .zellij/patches/current.patch"
-    subprocess: true
     command: >-
       bash -lc "root=\$(git rev-parse --show-toplevel); mkdir -p \"\$root/.zellij/patches\"; git -C \"\$root\" diff --cached > \"\$root/.zellij/patches/current.patch\"; printf \"Exported staged patch to %s\n\" \"\$root/.zellij/patches/current.patch\""
-
+    output: terminal
   - key: "I"
     context: "files"
     description: "Check saved patch applies cleanly"
-    subprocess: true
     command: >-
       bash -lc "root=\$(git rev-parse --show-toplevel); git -C \"\$root\" apply --check \"\$root/.zellij/patches/current.patch\" && echo \"Patch check: OK\""
-
+    output: terminal
   - key: "G"
     context: "files"
     description: "Refresh patch view (patch_refresh)"
-    subprocess: true
     command: >-
       fish -lc "set -l root (git rev-parse --show-toplevel); cd \"$root\"; set -l patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; if not test -d \"$patch_root\"; set patch_root \"$root/zellij/fish/functions\"; end; source \"$patch_root/patch_set.fish\"; source \"$patch_root/patch_refresh.fish\"; source \"$patch_root/patch_apply.fish\"; patch_refresh"
-
+    output: terminal
   - key: "U"
     context: "files"
     description: "Apply saved patch (patch_apply, confirms)"
-    subprocess: true
     command: >-
       fish -lc "set -l root (git rev-parse --show-toplevel); cd \"$root\"; set -l patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; if not test -d \"$patch_root\"; set patch_root \"$root/zellij/fish/functions\"; end; source \"$patch_root/patch_set.fish\"; source \"$patch_root/patch_refresh.fish\"; source \"$patch_root/patch_apply.fish\"; patch_apply"
+    output: terminal
