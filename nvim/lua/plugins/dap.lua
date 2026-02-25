@@ -7,7 +7,7 @@ return {
     "mfussenegger/nvim-dap",
     lazy = true,
     dependencies = {
-      "rcarriga/nvim-dap-ui",
+      { "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
       "mfussenegger/nvim-dap-python",
       "theHamsta/nvim-dap-virtual-text",
     },
@@ -94,28 +94,6 @@ return {
         }
       end
     end,
-  },
-
-  -- DAP UI
-  {
-    "rcarriga/nvim-dap-ui",
-    lazy = true,
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    opts = {},
-  },
-
-  -- DAP Python - lazy loaded with dap
-  {
-    "mfussenegger/nvim-dap-python",
-    lazy = true,
-    ft = "python",
-  },
-
-  -- DAP Virtual Text
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    lazy = true,
-    opts = {},
   },
 
   -- Mason DAP integration - lazy loaded
