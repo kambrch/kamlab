@@ -1,0 +1,40 @@
+// Zellij workspace layout for the agent-centric 3x2 development workflow
+// Current pane map (editor-heavy variant):
+// ┌───────────────────┬───────────────────┐
+// │                   │                   │
+// │       NVIM        │       AGENT       │
+// │                   │                   │
+// ├───────────────────┼───────────────────┤
+// │        AUX        │        GIT        │
+// └───────────────────┴───────────────────┘
+layout {
+    pane split_direction="vertical" {
+        // Left column
+        pane split_direction="horizontal" size="50%" {
+            pane name="NVIM" size="75%" {
+                command "nvim"
+            }
+            pane name="AUX" size="25%" {
+                command "fish"
+                args "-l"
+                args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+            }
+        }
+        // Right column
+        pane split_direction="horizontal" size="50%" {
+            pane name="AGENT" size="50%" {
+                command "fish"
+                args "-l"
+                args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+            }
+            // Disabled DIFF pane (kept here for easy restore)
+            // pane name="DIFF" size="25%" {
+            //     command "bash"
+            //     args "-lc" "if [ -x \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\" ]; then exec \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\"; elif [ -x \"zellij/scripts/dev-diff-pane.sh\" ]; then exec \"zellij/scripts/dev-diff-pane.sh\"; else echo 'DIFF pane script not found'; exec bash; fi"
+            // }
+            pane name="GIT" size="50%" {
+                command "lazygit"
+            }
+        }
+    }
+}

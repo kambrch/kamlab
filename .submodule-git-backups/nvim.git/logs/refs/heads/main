@@ -1,0 +1,18 @@
+0000000000000000000000000000000000000000 4190d97e2d0e54c75b47803ec9de3589fbec04c5 kamash <kamash@heisenbug.localdomain> 1770326838 +0100	clone: from github.com:kambrch/kam-lab.git
+4190d97e2d0e54c75b47803ec9de3589fbec04c5 121c172d632f1d59d6aac3737865615cfa23e114 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770327802 +0100	commit: Additions for Python developing:
+121c172d632f1d59d6aac3737865615cfa23e114 e0b6c9a7bf49347245001541190fab77af57eb4e Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770330389 +0100	commit: copying fix
+e0b6c9a7bf49347245001541190fab77af57eb4e ac1ac802262e3e9f5aaf22c6eae833027ef2dc66 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770466553 +0100	commit: issues fix
+ac1ac802262e3e9f5aaf22c6eae833027ef2dc66 aae155dc6d3adabb6d7d774cab42dd3b408b9e34 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770466791 +0100	commit: yank issues fix
+aae155dc6d3adabb6d7d774cab42dd3b408b9e34 87181ba4d2b99d990576377fc57d9f09be59249d Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770466968 +0100	commit: spelling check
+87181ba4d2b99d990576377fc57d9f09be59249d 6ab2d0bfe32bdaf1b924bebd39fc3bba73d136e9 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770467202 +0100	commit: spelling checks fix
+6ab2d0bfe32bdaf1b924bebd39fc3bba73d136e9 b0dbb9b989c506ffd0d21a94ac82b3d993abc583 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770468815 +0100	commit: dashboard art
+b0dbb9b989c506ffd0d21a94ac82b3d993abc583 d1acf47243a603e8b06929a4b88854a475b24744 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770474886 +0100	commit: Poetry integration
+d1acf47243a603e8b06929a4b88854a475b24744 cfe71d6ee217fdb6a59eb9488f9cbdf454219470 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770475344 +0100	commit: readme.md expansion
+cfe71d6ee217fdb6a59eb9488f9cbdf454219470 513862e29f734c5712db9bf90c3388fe22025158 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1770490461 +0100	commit: polish spellchecking fix
+513862e29f734c5712db9bf90c3388fe22025158 978661c6bb844b8c2df54488222a12d758b6ace8 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771674072 +0100	commit: Fix: copying-paste
+978661c6bb844b8c2df54488222a12d758b6ace8 0986190b6f200256d9a8121689c44fa00fcca7f9 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771677521 +0100	commit: Feat: new configs
+0986190b6f200256d9a8121689c44fa00fcca7f9 2408bc6982a5f17404955b425d7f1c5f3d229630 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771678423 +0100	commit: Feat: better lazy-loading
+2408bc6982a5f17404955b425d7f1c5f3d229630 31af20aeabaf0564d70f344ea4ea30209c89ce04 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771678849 +0100	commit: Fix dashboard fixed
+31af20aeabaf0564d70f344ea4ea30209c89ce04 c50d19bf446363b9b794fe01f3c7326c589d8157 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771680486 +0100	commit: Feat: pluggins optimization, surrounds added
+c50d19bf446363b9b794fe01f3c7326c589d8157 b756da0bb321e54b0975ff0e8ae5e6201e06bf00 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771708162 +0100	commit: Feat: tabby integration
+b756da0bb321e54b0975ff0e8ae5e6201e06bf00 4eb2325bc8db4679057165949137ea419c692419 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771770026 +0100	commit: Feat: cheat.sh integration

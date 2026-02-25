@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 5713c821107a22949a747bd808cb51a0b159bac1 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771788660 +0100	commit (initial): Repo init
+5713c821107a22949a747bd808cb51a0b159bac1 f532b423822c7a4a93a7961c6b951e266f0b9737 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771805616 +0100	commit: Feat: nvim+agent+diff+aux split
+f532b423822c7a4a93a7961c6b951e266f0b9737 4eeeb4cf46546f259e2e492181db234acae18e9c Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771806047 +0100	commit: Fix: keybings conflict with nvim
+4eeeb4cf46546f259e2e492181db234acae18e9c e6e6aafa4631003f4ae5ff1cfef13478e321ba4a Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771806526 +0100	commit: Fix: keybings conflict with nvim
+e6e6aafa4631003f4ae5ff1cfef13478e321ba4a 94a4ee13446b5a1727c08682b6405e295575b8a1 Kamil 'Kamaś' Bruchal <kamil.bruchal.pro@gmail.com> 1771812473 +0100	commit: Feat: integration into broader env
