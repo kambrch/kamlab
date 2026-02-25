@@ -129,6 +129,13 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "y" {
+            LaunchOrFocusPlugin "forgot" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
@@ -205,6 +212,13 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "Alt y" {
+            LaunchOrFocusPlugin "forgot" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
@@ -270,6 +284,7 @@ plugins {
     about location="zellij:about"
     monocle location="file:~/.config/kamlab/zellij/plugins/monocle.wasm"
     multitask location="file:~/.config/kamlab/zellij/plugins/multitask.wasm"
+    forgot location="file:~/.config/kamlab/zellij/plugins/zellij-forgot.wasm"
 }
 
 // Plugins to load in the background when a new session starts
