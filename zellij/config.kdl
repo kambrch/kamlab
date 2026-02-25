@@ -136,6 +136,22 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "b" {
+            LaunchOrFocusPlugin "bookmarks" {
+                floating true
+                move_to_focused_tab true
+                cwd "/home/kamash/.config/kamlab/zellij"
+            };
+            SwitchToMode "Normal"
+        }
+        bind "v" {
+            LaunchOrFocusPlugin "favs" {
+                floating true
+                move_to_focused_tab true
+                cache_dir "/home/kamash/.config/kamlab/zellij/plugins/zellij-favs-cache.kdl"
+            };
+            SwitchToMode "Normal"
+        }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
                 floating true
@@ -219,6 +235,22 @@ keybinds {
             };
             SwitchToMode "Normal"
         }
+        bind "Alt b" {
+            LaunchOrFocusPlugin "bookmarks" {
+                floating true
+                move_to_focused_tab true
+                cwd "/home/kamash/.config/kamlab/zellij"
+            };
+            SwitchToMode "Normal"
+        }
+        bind "Alt v" {
+            LaunchOrFocusPlugin "favs" {
+                floating true
+                move_to_focused_tab true
+                cache_dir "/home/kamash/.config/kamlab/zellij/plugins/zellij-favs-cache.kdl"
+            };
+            SwitchToMode "Normal"
+        }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
@@ -286,6 +318,8 @@ plugins {
     monocle location="file:~/.config/kamlab/zellij/plugins/monocle.wasm"
     multitask location="file:~/.config/kamlab/zellij/plugins/multitask.wasm"
     forgot location="file:~/.config/kamlab/zellij/plugins/zellij-forgot.wasm"
+    bookmarks location="file:~/.config/kamlab/zellij/plugins/zellij-bookmarks.wasm"
+    favs location="file:~/.config/kamlab/zellij/plugins/zellij-favs.wasm"
 }
 
 // Plugins to load in the background when a new session starts
