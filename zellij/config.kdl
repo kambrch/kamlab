@@ -223,11 +223,12 @@ keybinds {
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt o" { MoveTab "Right"; }
-        // Fixed-layout focus jumps: 1=NVIM, 2=AGENT, 3=DIFF, 4=AUX
+        // Fixed-layout focus jumps: 1=NVIM, 2=AGENT, 3=AUX, 4=GIT
         bind "Alt 1" { MoveFocus "Left"; MoveFocus "Up"; }
         bind "Alt 2" { MoveFocus "Right"; MoveFocus "Up"; }
         bind "Alt 3" { MoveFocus "Left"; MoveFocus "Down"; }
         bind "Alt 4" { MoveFocus "Right"; MoveFocus "Down"; }
+        // Keep Alt+h/j/k/l for Zellij pane navigation; Neovim split/pane navigation uses <Leader>z{h,j,k,l}
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
         bind "Alt j" "Alt Down" { MoveFocus "Down"; }
