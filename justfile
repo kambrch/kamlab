@@ -41,3 +41,21 @@ verify-layout:
 # Run all local static checks without launching interactive apps.
 smoke: audit verify-fish verify-layout
     @echo "smoke: OK"
+
+# Commit changed submodules first, then commit updated submodule pointers in superproject.
+git-commit-submodules:
+    @git submodule foreach --recursive '\
+      if [ -n "$$(git status --porcelain)" ]; then \
+        echo "[$$name] committing changes"; \
+        git add -A; \
+        git commit -m "update submodule"; \
+      else \
+        echo "[$$name] no changes"; \
+      fi'
+    @if [ -n "$$(git status --porcelain)" ]; then \
+      echo "[superproject] committing submodule pointers / local changes"; \
+      git add -A; \
+      git commit -m "update submodules pointers"; \
+    else \
+      echo "[superproject] no changes"; \
+    fi
