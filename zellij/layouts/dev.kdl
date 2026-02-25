@@ -8,32 +8,59 @@
 // │        AUX        │        GIT        │
 // └───────────────────┴───────────────────┘
 layout {
-    pane split_direction="vertical" {
-        // Left column
-        pane split_direction="horizontal" size="50%" {
-            pane name="NVIM" size="75%" {
-                command "nvim"
-            }
-            pane name="AUX" size="25%" {
-                command "fish"
-                args "-l"
-                args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="zjstatus" {
+                hide_frame_for_single_pane false
+                format_left "{mode}"
+                format_center "{tabs}"
+                format_right "#[fg=#8a8f98]m mono  t task  y forgot  b bm  v favs  z lock"
+
+                mode_normal "#[bg=#3a7bd5,fg=#101317,bold] NORMAL #[fg=#a9b1ba,bg=#1a1f25]  ^f Pane  ^x Tab  ^a Sess  ^g Lock "
+                mode_locked "#[bg=#c94f6d,fg=#101317,bold] LOCKED #[fg=#a9b1ba,bg=#1a1f25]  Alt+z unlock "
+                mode_pane "#[bg=#5f9e6e,fg=#101317,bold] PANE #[fg=#a9b1ba,bg=#1a1f25]  h/j/k/l move  x close "
+                mode_tab "#[bg=#c0a15d,fg=#101317,bold] TAB #[fg=#a9b1ba,bg=#1a1f25]  h/l nav  x close  n new "
+                mode_resize "#[bg=#8f78d1,fg=#101317,bold] RESIZE #[fg=#a9b1ba,bg=#1a1f25]  h/j/k/l resize "
+                mode_move "#[bg=#d38a5f,fg=#101317,bold] MOVE #[fg=#101317,bold]  h/j/k/l move pane "
+                mode_scroll "#[bg=#5f8fa8,fg=#101317,bold] SCROLL #[fg=#a9b1ba,bg=#1a1f25]  j/k  ^f/^b  q/esc "
+                mode_session "#[bg=#5f9ea0,fg=#101317,bold] SESSION #[fg=#a9b1ba,bg=#1a1f25]  m/t/y/b/v plugins "
+                mode_tmux "#[bg=#6aa3a1,fg=#101317,bold] TMUX #[fg=#a9b1ba,bg=#1a1f25]  x close  c tab  % split "
+
+                tab_normal "#[fg=#8a8f98,bg=#1a1f25] {index} {name} "
+                tab_active "#[fg=#101317,bg=#7aa2f7,bold] {index} {name} "
+                tab_separator " "
             }
         }
-        // Right column
-        pane split_direction="horizontal" size="50%" {
-            pane name="AGENT" size="50%" {
-                command "fish"
-                args "-l"
-                args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+    }
+    tab {
+        pane split_direction="vertical" {
+            // Left column
+            pane split_direction="horizontal" size="50%" {
+                pane name="NVIM" size="75%" {
+                    command "nvim"
+                }
+                pane name="AUX" size="25%" {
+                    command "fish"
+                    args "-l"
+                    args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+                }
             }
-            // Disabled DIFF pane (kept here for easy restore)
-            // pane name="DIFF" size="25%" {
-            //     command "bash"
-            //     args "-lc" "if [ -x \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\" ]; then exec \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\"; elif [ -x \"zellij/scripts/dev-diff-pane.sh\" ]; then exec \"zellij/scripts/dev-diff-pane.sh\"; else echo 'DIFF pane script not found'; exec bash; fi"
-            // }
-            pane name="GIT" size="50%" {
-                command "lazygit"
+            // Right column
+            pane split_direction="horizontal" size="50%" {
+                pane name="AGENT" size="50%" {
+                    command "fish"
+                    args "-l"
+                    args "-C" "set -l _patch_root ''; if test -d \"$HOME/.config/kamlab/zellij/fish/functions\"; set _patch_root \"$HOME/.config/kamlab/zellij/fish/functions\"; else if test -d \"zellij/fish/functions\"; set _patch_root \"zellij/fish/functions\"; end; if test -n \"$_patch_root\"; source \"$_patch_root/patch_set.fish\"; source \"$_patch_root/patch_refresh.fish\"; source \"$_patch_root/patch_apply.fish\"; end"
+                }
+                // Disabled DIFF pane (kept here for easy restore)
+                // pane name="DIFF" size="25%" {
+                //     command "bash"
+                //     args "-lc" "if [ -x \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\" ]; then exec \"$HOME/.config/kamlab/zellij/scripts/dev-diff-pane.sh\"; elif [ -x \"zellij/scripts/dev-diff-pane.sh\" ]; then exec \"zellij/scripts/dev-diff-pane.sh\"; else echo 'DIFF pane script not found'; exec bash; fi"
+                // }
+                pane name="GIT" size="50%" {
+                    command "lazygit"
+                }
             }
         }
     }

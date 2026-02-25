@@ -48,6 +48,7 @@ kitty/*.log
 zellij/*.kdl.bak
 zellij/*.log
 zellij/layouts/*.session
+zellij/state/
 
 # --- LAZYGIT ---
 lazygit/state.yml

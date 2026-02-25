@@ -331,6 +331,7 @@ plugins {
     forgot location="file:~/.config/kamlab/zellij/plugins/zellij-forgot.wasm"
     bookmarks location="file:~/.config/kamlab/zellij/plugins/zellij-bookmarks.wasm"
     favs location="file:~/.config/kamlab/zellij/plugins/zellij-favs.wasm"
+    zjstatus location="file:~/.config/kamlab/zellij/plugins/zjstatus.wasm"
     autolock location="file:~/.config/kamlab/zellij/plugins/zellij-autolock.wasm" {
         is_enabled true
         triggers "nvim|vim|lazygit|fzf|hx|helix|atuin|zoxide"
