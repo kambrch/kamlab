@@ -18,6 +18,18 @@ optional_tools=(
   glow
   matugen
   carbonyl
+  jq
+  yq
+  fx
+  btm
+  cht.sh
+  tldr
+  eza
+  tokei
+  sd
+  yazi
+  ncdu
+  entr
   bat
   delta
   watch
