@@ -44,8 +44,6 @@ bind = SUPER, Z, exec, kitty -e ~/bin/zellij-pick-dir
 - Fish `dev` helper: `fish/functions/dev.fish`
 - DIFF pane script: `zellij/scripts/dev-diff-pane.sh`
 
-Note: `zellij/` is a submodule here, so changes under that directory are versioned in the submodule repository.
-
 ## Alternative (Not Recommended)
 
 A bootstrap Zellij session with a transient floating prompt pane could collect a directory and then spawn the real layout, but it is more complex and less reliable than prompting before launch.
