@@ -1,6 +1,6 @@
 # Kamlab Configuration Reference
 
-This document is the operational reference for the dotfiles/config set in this repository.
+This document is the operational reference for the dotfiles set in this repository.
 
 ## Scope
 
@@ -34,7 +34,7 @@ This repo manages terminal-centric development config for:
 | `carbonyl/` | Carbonyl usage and integration notes |
 | `matugen/` | Matugen theme templates and generation config |
 | `zshrc.d/` | Zsh snippets kept alongside Fish-first setup |
-| `zellij/themes/` | Matugen-aware Zellij theme definitions |
+| `zellij/themes/` | optional Matugen Zellij theme definitions |
 | `scripts/` | Host/tooling audit helpers |
 | `templates/project/` | Starter `.envrc` + `justfile` for new projects |
 | `systemd/user/` | User services (currently SSH agent) |
@@ -114,7 +114,7 @@ Autolock plugin is enabled with trigger command patterns including `nvim`, `lazy
 | `zellij/scripts/copy-clipboard.sh` | Clipboard fallback chain (`wl-copy` -> `xclip` -> `pbcopy`) |
 | `zellij/scripts/multitask_run.sh` | Multitask launcher hook |
 
-Related note: `zellij/development.md` documents directory-first launch flow.
+Related note: [zellij/development.md](zellij/development.md) documents directory-first launch flow.
 
 ## Neovim (`nvim/`)
 
@@ -138,8 +138,8 @@ Primary files:
 
 Additional docs:
 
-- `nvim/README.md`
-- `nvim/QWEN.md`
+- [nvim/README.md](nvim/README.md)
+- [nvim/QWEN.md](nvim/QWEN.md)
 
 ## Kitty (`kitty/`)
 
@@ -228,7 +228,7 @@ ln -sf ~/.config/kamlab/bat/config ~/.config/bat/config
 Primary files:
 
 - `ripgrep/config`
-- `ripgrep/README.md`
+- [ripgrep/README.md](ripgrep/README.md)
 
 Behavior:
 
@@ -254,7 +254,7 @@ Behavior:
 
 Primary file:
 
-- `carbonyl/README.md`
+- [carbonyl/README.md](carbonyl/README.md)
 
 Behavior:
 
@@ -280,7 +280,7 @@ Additional generated integration targets:
 - `~/.config/starship-matugen.toml` (Starship config overlay)
 - `~/.local/state/quickshell/user/generated/nvim/matugen.lua` (Nvim highlights)
 - `~/.local/state/quickshell/user/generated/fish/matugen-colors.fish` (Fish colors)
-- `~/.config/kamlab/zellij/themes/matugen.kdl` (Zellij theme)
+- `~/.config/kamlab/zellij/themes/matugen.kdl` (optional Zellij theme)
 
 `zellij/themes/matugen.kdl` is synchronized from generated `colors.json` using:
 
@@ -298,6 +298,7 @@ bash ~/.config/kamlab/scripts/matugen-mode.sh on
 bash ~/.config/kamlab/scripts/matugen-mode.sh status
 ```
 
+Default baseline is `theme "default"` in `zellij/config.kdl`.
 The toggle creates/removes `~/.config/kamlab/.matugen-disabled` and switches managed lines in Kitty/Zellij.
 Shell and Nvim overlays also honor `KAMLAB_MATUGEN_DISABLE=1`.
 
@@ -375,7 +376,7 @@ Starter artifacts for new repos:
 
 - `.envrc`: adds `.venv/bin` and `bin/` to `PATH`, sets `PYTHONUNBUFFERED=1`
 - `justfile`: baseline `test`, `lint`, `format`, `run`
-- `README.md`: short usage notes
+- [templates/project/README.md](templates/project/README.md): short usage notes
 
 Use these when bootstrapping a new repo that should follow the same human/agent workflow contract.
 

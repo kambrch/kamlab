@@ -2,6 +2,8 @@
 
 Managed `rg` defaults for this setup.
 
+Related docs: [README.md](../README.md), [config-docs.md](../config-docs.md)
+
 Files:
 
 - `ripgrep/config`

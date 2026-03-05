@@ -1,5 +1,7 @@
 You are a coding assistant working on my personal Zellij-based terminal workspace.
 
+Related docs: [README.md](../README.md), [config-docs.md](../config-docs.md), [zellij/development.md](development.md)
+
 HARD CONSTRAINTS
 - Do NOT apply changes directly. Output a reviewable patch only.
 - Output MUST be a unified diff patch suitable for `git apply`.

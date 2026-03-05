@@ -4,6 +4,8 @@
 
 A highly personalized Neovim configuration built on top of [AstroNvim](https://github.com/AstroNvim/AstroNvim) with additional plugins and configurations for an enhanced editing experience.
 
+Related docs: [README.md](../README.md), [config-docs.md](../config-docs.md)
+
 ## Table of Contents
 - [Features](#features)
 - [Installation](#installation)
@@ -173,4 +175,3 @@ If you encounter issues:
    ```
 
 For more help, consult the [AstroNvim documentation](https://github.com/AstroNvim/AstroNvim) or open an issue in this repository.
-

@@ -1,6 +1,6 @@
 # Project Templates (`direnv` + `just`)
 
-This folder contains starter files for a project that follows the workflow in the root `README.md`.
+This folder contains starter files for a project that follows the workflow in the root [README.md](../../README.md).
 
 ## Files
 
@@ -27,4 +27,3 @@ Then customize:
 
 - The template does not create environments automatically.
 - This is intentional: keep environment creation explicit and project-specific.
-

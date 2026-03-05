@@ -1,5 +1,7 @@
 # Zellij Launch With Directory Picker
 
+Related docs: [README.md](../README.md), [config-docs.md](../config-docs.md)
+
 This note is the practical version of the idea for the current `kamlab` setup: pick a project directory first, then start Zellij so every pane inherits the correct `cwd`.
 
 ## Goal

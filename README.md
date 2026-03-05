@@ -2,8 +2,6 @@
 
 ## Stack
 
-Zellij, AstroNvim, Fish, Kitty, Lazygit, Just, Direnv
-
 **Terminal multiplexer:** Zellij
 **Terminal emulator:** Kitty
 **Shell:** Fish
@@ -14,10 +12,10 @@ Zellij, AstroNvim, Fish, Kitty, Lazygit, Just, Direnv
 
 ## Documentation
 
-- Main config reference: `docs/CONFIG_REFERENCE.md`
-- Neovim details: `nvim/README.md`
-- Zellij launch notes: `zellij/development.md`
-- Project starter templates: `templates/project/README.md`
+- Main config reference: [config-docs.md](config-docs.md)
+- Neovim details: [nvim/README.md](nvim/README.md)
+- Zellij launch notes: [zellij/development.md](zellij/development.md)
+- Project starter templates: [templates/project/README.md](templates/project/README.md)
 
 ## Design Goals
 
@@ -78,7 +76,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `scripts/` | host/tooling audit scripts |
 | `templates/project/` | starter `.envrc` + `justfile` |
 | `systemd/user/` | user-level services (`ssh-agent`) |
-| `zellij/themes/` | Matugen-aware Zellij theme file |
+| `zellij/themes/` | optional Matugen Zellij theme file |
 
 ## Tool Roles
 
@@ -170,11 +168,12 @@ Matugen-driven theming is wired for:
 - `git-delta` via `~/.config/git/delta-theme.gitconfig` include
 - `starship` via `~/.config/starship-matugen.toml`
 - `nvim` highlight overlay via generated Lua module
-- `zellij` theme (`matugen`) via `zellij/themes/matugen.kdl`
 - `fish` syntax colors via generated fish color file
 
-`zellij/themes/matugen.kdl` is generated from `~/.local/state/quickshell/user/generated/colors.json`
-via `scripts/sync-zellij-theme.sh` (or `just sync-zellij-theme`).
+Zellij now defaults to `theme "default"` in `zellij/config.kdl`.
+`zellij/themes/matugen.kdl` is still available as an optional generated theme from
+`~/.local/state/quickshell/user/generated/colors.json` via
+`scripts/sync-zellij-theme.sh` (or `just sync-zellij-theme`).
 
 ## Matugen Recovery
 
@@ -221,4 +220,4 @@ Use `templates/project/` as a baseline for new repos:
 ## Notes
 
 - Clipboard fallback chain for Zellij copy: `wl-copy` -> `xclip` -> `pbcopy`.
-- For full setting-level documentation, keep `docs/CONFIG_REFERENCE.md` in sync with config changes.
+- For full setting-level documentation, keep [config-docs.md](config-docs.md) in sync with config changes.
