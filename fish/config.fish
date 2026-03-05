@@ -50,7 +50,7 @@ if status is-interactive # Commands to run in interactive sessions can go here
         cat ~/.local/state/quickshell/user/generated/terminal/sequences.txt
     end
 
-    # Aliases
+    # Shortcuts that do not need pre-execution expansion visibility.
     alias clear "printf '\033[2J\033[3J\033[1;1H'" # fix: kitty doesn't clear properly
     alias celar "printf '\033[2J\033[3J\033[1;1H'"
     alias claer "printf '\033[2J\033[3J\033[1;1H'"
@@ -70,16 +70,21 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias cx 'codex --no-alt-screen'
     alias j 'just'
     alias codex 'codex --no-alt-screen'
-    alias claude 'claude'
+    functions -e claude 2>/dev/null
 
-    # Safe-by-default file operations.
-    # Aliases ensure the flags apply even without abbreviation expansion.
-    alias rm 'rm -Iv'
-    alias cp 'cp -iv'
-    alias mv 'mv -iv'
-    alias ln 'ln -iv'
-    for op in rm cp mv ln
-        abbr --erase $op 2>/dev/null
+    # Safe-by-default file operations: keep as abbreviations so full flags are visible.
+    # Use global abbreviations (session-local) and do not overwrite user-defined entries.
+    if not abbr --query rm
+        abbr --add --global rm 'rm -Iv'
+    end
+    if not abbr --query cp
+        abbr --add --global cp 'cp -iv'
+    end
+    if not abbr --query mv
+        abbr --add --global mv 'mv -iv'
+    end
+    if not abbr --query ln
+        abbr --add --global ln 'ln -iv'
     end
 
 end
