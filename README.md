@@ -166,7 +166,7 @@ tldr systemctl
 
 Matugen-driven theming is wired for:
 
-- `kitty` via `globinclude ~/.config/kitty/matugen.conf`
+- `kitty` via `globinclude matugen.conf`
 - `git-delta` via `~/.config/git/delta-theme.gitconfig` include
 - `starship` via `~/.config/starship-matugen.toml`
 - `nvim` highlight overlay via generated Lua module
