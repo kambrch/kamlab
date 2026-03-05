@@ -71,7 +71,14 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias j 'just'
     alias codex 'codex --no-alt-screen'
     alias claude 'claude'
-    
+
+    # Safe-by-default file operation abbreviations.
+    # Expands when typed as the command token (e.g. `rm<space>` -> `rm -Iv `).
+    abbr --add --position command rm 'rm -Iv'
+    abbr --add --position command cp 'cp -iv'
+    abbr --add --position command mv 'mv -iv'
+    abbr --add --position command ln 'ln -iv'
+
 end
 
 function diff --description "Use git diff+delta in repos (no args), otherwise fallback to system diff"
