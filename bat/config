@@ -1,0 +1,6 @@
+# Use this file as ~/.config/bat/config
+
+--style=numbers,changes,header
+--paging=never
+--tabs=2
+--italic-text=always

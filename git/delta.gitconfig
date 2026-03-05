@@ -1,0 +1,25 @@
+# Include from ~/.gitconfig:
+# [include]
+#   path = ~/.config/kamlab/git/delta.gitconfig
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    line-numbers = true
+    side-by-side = true
+    syntax-theme = Monokai Extended
+    features = decorations
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    hunk-header-decoration-style = blue box
+
+[merge]
+    conflictstyle = zdiff3
