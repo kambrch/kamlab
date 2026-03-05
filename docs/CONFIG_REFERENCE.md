@@ -29,6 +29,7 @@ This repo manages terminal-centric development config for:
 | `gh/` | GitHub CLI configuration |
 | `git/` | Git global ignore bootstrap snippets |
 | `bat/` | Bat pager/highlighter defaults |
+| `ripgrep/` | Ripgrep default flags config |
 | `glow/` | Glow markdown viewer configuration |
 | `carbonyl/` | Carbonyl usage and integration notes |
 | `matugen/` | Matugen theme templates and generation config |
@@ -219,6 +220,23 @@ To enable:
 ```bash
 mkdir -p ~/.config/bat
 ln -sf ~/.config/kamlab/bat/config ~/.config/bat/config
+```
+
+## Ripgrep (`ripgrep/`)
+
+Primary files:
+
+- `ripgrep/config`
+- `ripgrep/README.md`
+
+Behavior:
+
+- provides shared default `rg` flags for this workflow
+
+To enable globally:
+
+```bash
+export RIPGREP_CONFIG_PATH="$HOME/.config/kamlab/ripgrep/config"
 ```
 
 ## Glow (`glow/`)

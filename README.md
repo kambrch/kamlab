@@ -70,6 +70,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `gh/` | GitHub CLI configuration |
 | `git/` | global Git ignore snippets/bootstrap |
 | `bat/` | bat pager/highlighter defaults |
+| `ripgrep/` | shared `rg` defaults |
 | `glow/` | Glow markdown viewer preferences |
 | `carbonyl/` | terminal-browser integration notes |
 | `matugen/` | wallpaper-driven color generation templates/config |

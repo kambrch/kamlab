@@ -1,0 +1,9 @@
+# Use with:
+# export RIPGREP_CONFIG_PATH="$HOME/.config/kamlab/ripgrep/config"
+
+--hidden
+--smart-case
+--max-columns=200
+--glob=!.git
+--glob=!node_modules
+--glob=!.venv
