@@ -1,7 +1,16 @@
-# Agent-Centric Terminal Development Workflow
+# Personal Terminal Development Workflow
 
-**Stack:** Zellij, AstroNvim, Fish, Kitty, Lazygit, Just, Direnv  
-**Primary use case:** high-throughput coding with human + agent collaboration in a persistent terminal workspace.
+## Stack
+
+Zellij, AstroNvim, Fish, Kitty, Lazygit, Just, Direnv
+
+**Terminal multiplexer:** Zellij
+**Terminal emulator:** Kitty
+**Shell:** Fish
+**Editor:** AstroNvim
+**Git helper:** Lazygit
+**Task runner:** Just
+**Environment loader:** Direnv 
 
 ## Documentation
 
@@ -14,9 +23,7 @@
 
 - Deterministic per-project environments
 - Persistent runtime context outside the editor
-- Continuous diff/test visibility during agent work
-- Minimal context switching between editing, review, and git
-- Human-controlled code semantics and git history
+- Minimal context switching between editing, review, and git 
 
 ## Quick Start
 
@@ -51,26 +58,6 @@ Behavior:
 
 The `work` helper is defined in `fish/config.fish`.
 
-### Main feedback loop
-
-```text
-tests -> agent patch -> diff review -> nvim review -> commit
-```
-
-## Workspace Model
-
-```text
-directory -> environment -> zellij session -> (nvim + agent + diff/git panes)
-```
-
-Single source of truth per concern:
-
-| Concern | Owner |
-|---|---|
-| Environment | `direnv` / runtime manager |
-| Tasks | `just` |
-| History | `git` |
-
 ## Core Components
 
 | Path | Role |
@@ -80,11 +67,45 @@ Single source of truth per concern:
 | `nvim/` | AstroNvim configuration and plugin modules |
 | `kitty/` | terminal UI/key mappings |
 | `lazygit/` | git TUI defaults and patch commands |
+| `gh/` | GitHub CLI configuration |
+| `git/` | global Git ignore snippets/bootstrap |
+| `glow/` | Glow markdown viewer preferences |
+| `matugen/` | wallpaper-driven color generation templates/config |
+| `zshrc.d/` | legacy/shared Zsh snippets (Hyprland + shortcuts) |
 | `scripts/` | host/tooling audit scripts |
 | `templates/project/` | starter `.envrc` + `justfile` |
 | `systemd/user/` | user-level services (`ssh-agent`) |
 
-## Important Local Commands
+## Tool Roles
+
+### Required
+
+| Tool | Role |
+|---|---|
+| `zellij` | persistent terminal sessions/panes for coding workflows |
+| `direnv` | per-project environment auto-loading from `.envrc` |
+| `just` | deterministic task runner for checks and workflow commands |
+| `zoxide` | fast directory jumping (`z`) based on frecency |
+| `ghq` | local multi-repo manager for clone/list/jump workflows |
+| `rg` | fast recursive text/code search |
+| `fd` | fast file and path discovery |
+| `fzf` | fuzzy finder UI used by interactive shell workflows |
+| `lazygit` | terminal UI for git operations |
+
+### Optional
+
+| Tool | Role |
+|---|---|
+| `delta` | enhanced syntax-highlighted diffs and pager output |
+| `gh` | GitHub CLI for PR/issue/repo workflows |
+| `glow` | terminal markdown rendering |
+| `matugen` | generate and apply UI/system color palettes |
+| `watch` | rerun commands continuously for feedback loops |
+| `uv` | fast Python packaging/environment tooling |
+| `mise` | runtime and tool version manager |
+| `juliaup` | Julia version manager |
+
+## Local Commands
 
 | Command | Purpose |
 |---|---|
@@ -122,6 +143,5 @@ Use `templates/project/` as a baseline for new repos:
 
 ## Notes
 
-- `zellij/` is a git submodule; edits there are tracked in the submodule repository.
 - Clipboard fallback chain for Zellij copy: `wl-copy` -> `xclip` -> `pbcopy`.
 - For full setting-level documentation, keep `docs/CONFIG_REFERENCE.md` in sync with config changes.

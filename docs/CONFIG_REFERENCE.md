@@ -11,6 +11,9 @@ This repo manages terminal-centric development config for:
 - AstroNvim-based Neovim
 - Kitty terminal
 - Lazygit
+- GitHub CLI
+- Glow markdown viewer
+- Matugen theme generation
 - Bootstrap scripts, templates, and user-level systemd services
 
 ## Repository Map
@@ -22,6 +25,11 @@ This repo manages terminal-centric development config for:
 | `nvim/` | Editor runtime and plugin config |
 | `kitty/` | Terminal UI and key mappings |
 | `lazygit/` | Git TUI defaults + patch workflow shortcuts |
+| `gh/` | GitHub CLI configuration |
+| `git/` | Git global ignore bootstrap snippets |
+| `glow/` | Glow markdown viewer configuration |
+| `matugen/` | Matugen theme templates and generation config |
+| `zshrc.d/` | Zsh snippets kept alongside Fish-first setup |
 | `scripts/` | Host/tooling audit helpers |
 | `templates/project/` | Starter `.envrc` + `justfile` for new projects |
 | `systemd/user/` | User services (currently SSH agent) |
@@ -161,6 +169,64 @@ Behavior:
   - `G`: refresh patch view helpers
   - `U`: apply saved patch via Fish helper scripts
 
+## GitHub CLI (`gh/`)
+
+Primary files:
+
+- `gh/config.yml`
+- `gh/hosts.yml`
+
+Behavior:
+
+- sets default git protocol and CLI interaction preferences
+- defines command aliases (for example `co: pr checkout`)
+
+## Git (`git/`)
+
+Primary file:
+
+- `git/ignore`
+
+Behavior:
+
+- documents/bootstraps global excludesfile usage:
+  `git config --global core.excludesfile ~/.config/git/ignore`
+- stores host-level ignore patterns (for example `**/.claude/settings.local.json`)
+
+## Glow (`glow/`)
+
+Primary file:
+
+- `glow/glow.yml`
+
+Behavior:
+
+- controls markdown TUI rendering defaults (style/width/mouse/pager)
+
+## Matugen (`matugen/`)
+
+Primary files:
+
+- `matugen/config.toml`
+- `matugen/templates/*`
+
+Behavior:
+
+- maps generated palette outputs into Hyprland, Hyprlock, Fuzzel, GTK, and Quickshell paths
+- keeps template artifacts versioned in-repo
+
+## Zsh Snippets (`zshrc.d/`)
+
+Primary files:
+
+- `zshrc.d/auto-Hypr.sh`
+- `zshrc.d/dots-hyprland.zsh`
+- `zshrc.d/shortcuts.zsh`
+
+Behavior:
+
+- retains legacy/shared shell snippets for Hyprland auto-start and key bindings
+
 ## Repo Automation (`justfile`, `scripts/`, `systemd/`)
 
 ### `justfile` commands
@@ -172,7 +238,6 @@ Behavior:
 | `just verify-fish` | Parse-check Fish helper file |
 | `just verify-layout` | Ensure legacy layout removed + diff script syntax check |
 | `just smoke` | Combined non-interactive verification |
-| `just git-commit-submodules` | Commit submodules then superproject pointer updates |
 
 ### Environment audit script
 
@@ -180,7 +245,7 @@ Behavior:
 
 - OS and likely package manager
 - required tools (`zellij`, `direnv`, `just`, `zoxide`, `ghq`, `rg`, `fd`, `fzf`, `lazygit`)
-- optional tools (`delta`, `watch`, `uv`, `mise`, `juliaup`)
+- optional tools (`gh`, `glow`, `matugen`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
 
 ### User service
 
@@ -198,15 +263,6 @@ Starter artifacts for new repos:
 - `README.md`: short usage notes
 
 Use these when bootstrapping a new repo that should follow the same human/agent workflow contract.
-
-## Known Drift to Fix
-
-The root `justfile` target `verify-fish` currently checks `fish/functions/dev.fish`, but that file is not present in this repository state.
-
-If you want this check green, either:
-
-1. restore/create `fish/functions/dev.fish`, or
-2. update `verify-fish` to validate an existing helper (for example `fish/functions/doctor.fish`).
 
 ## Maintenance Checklist
 

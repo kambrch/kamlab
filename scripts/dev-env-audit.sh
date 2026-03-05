@@ -14,6 +14,9 @@ required_tools=(
 )
 
 optional_tools=(
+  gh
+  glow
+  matugen
   delta
   watch
   uv
