@@ -17,10 +17,11 @@ ssh-agent-status:
       echo "systemctl not found"; \
     fi
 
-# Verify the Fish helper function file parses.
+# Verify Fish config and core helper files parse.
 verify-fish:
-    @fish -n fish/functions/dev.fish
-    @echo "fish/functions/dev.fish: OK"
+    @fish -n fish/config.fish
+    @fish -n fish/functions/doctor.fish
+    @echo "fish/config.fish + fish/functions/doctor.fish: OK"
 
 # Verify legacy dev layout is removed and DIFF helper script still parses.
 verify-layout:
