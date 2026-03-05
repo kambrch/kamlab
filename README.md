@@ -71,6 +71,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `git/` | global Git ignore snippets/bootstrap |
 | `bat/` | bat pager/highlighter defaults |
 | `glow/` | Glow markdown viewer preferences |
+| `carbonyl/` | terminal-browser integration notes |
 | `matugen/` | wallpaper-driven color generation templates/config |
 | `zshrc.d/` | legacy/shared Zsh snippets (Hyprland + shortcuts) |
 | `scripts/` | host/tooling audit scripts |
@@ -101,6 +102,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `bat` | syntax-highlighted `cat` replacement for previews and paging |
 | `gh` | GitHub CLI for PR/issue/repo workflows |
 | `glow` | terminal markdown rendering |
+| `carbonyl` | terminal-first web browser for text-mode browsing |
 | `matugen` | generate and apply UI/system color palettes |
 | `watch` | rerun commands continuously for feedback loops |
 | `uv` | fast Python packaging/environment tooling |

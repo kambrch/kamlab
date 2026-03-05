@@ -17,6 +17,7 @@ optional_tools=(
   gh
   glow
   matugen
+  carbonyl
   bat
   delta
   watch

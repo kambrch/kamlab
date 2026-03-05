@@ -13,6 +13,7 @@ This repo manages terminal-centric development config for:
 - Lazygit
 - GitHub CLI
 - Glow markdown viewer
+- Carbonyl terminal browser
 - Matugen theme generation
 - Bootstrap scripts, templates, and user-level systemd services
 
@@ -29,6 +30,7 @@ This repo manages terminal-centric development config for:
 | `git/` | Git global ignore bootstrap snippets |
 | `bat/` | Bat pager/highlighter defaults |
 | `glow/` | Glow markdown viewer configuration |
+| `carbonyl/` | Carbonyl usage and integration notes |
 | `matugen/` | Matugen theme templates and generation config |
 | `zshrc.d/` | Zsh snippets kept alongside Fish-first setup |
 | `scripts/` | Host/tooling audit helpers |
@@ -229,6 +231,17 @@ Behavior:
 
 - controls markdown TUI rendering defaults (style/width/mouse/pager)
 
+## Carbonyl (`carbonyl/`)
+
+Primary file:
+
+- `carbonyl/README.md`
+
+Behavior:
+
+- documents how Carbonyl is used in this terminal-first workflow
+- tracks install/verification commands for host setup
+
 ## Matugen (`matugen/`)
 
 Primary files:
@@ -271,7 +284,7 @@ Behavior:
 
 - OS and likely package manager
 - required tools (`zellij`, `direnv`, `just`, `zoxide`, `ghq`, `rg`, `fd`, `fzf`, `lazygit`)
-- optional tools (`gh`, `glow`, `matugen`, `bat`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
+- optional tools (`gh`, `glow`, `carbonyl`, `matugen`, `bat`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
 
 ### User service
 
