@@ -295,6 +295,9 @@ Behavior:
 | `just verify-fish` | Parse-check Fish helper file |
 | `just verify-layout` | Ensure legacy layout removed + diff script syntax check |
 | `just smoke` | Combined non-interactive verification |
+| `just loop-test` | Event-driven test loop with Python/Julia routing |
+| `just loop-todo` | Event-driven TODO/FIXME loop into `nvim` |
+| `just loop-diff` | Event-driven compact git diff loop |
 
 ### Environment audit script
 
@@ -302,7 +305,33 @@ Behavior:
 
 - OS and likely package manager
 - required tools (`zellij`, `direnv`, `just`, `zoxide`, `ghq`, `rg`, `fd`, `fzf`, `lazygit`)
-- optional tools (`gh`, `glow`, `carbonyl`, `matugen`, `bat`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
+- optional tools (`gh`, `glow`, `carbonyl`, `matugen`, `jq`, `yq`, `fx`, `btm`, `cht.sh`, `tldr`, `eza`, `tokei`, `sd`, `yazi`, `ncdu`, `entr`, `bat`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
+
+### Event-Driven Workflow Patterns
+
+Prefer `entr` for file event triggers; keep `watch` as a polling fallback.
+
+```bash
+fd -e py -e toml -e yaml | entr -c pytest -q
+rg -l "TODO|FIXME" . | entr -c nvim
+```
+
+Project-root wrappers:
+
+```bash
+just loop-test
+just loop-todo
+just loop-diff
+```
+
+### Quick Command Recall
+
+Pair `cht.sh` (richer examples) with `tldr` (quick flag-shape reminders):
+
+```bash
+tldr tar
+tldr systemctl
+```
 
 ### User service
 

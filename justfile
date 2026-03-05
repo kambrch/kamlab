@@ -35,3 +35,19 @@ verify-layout:
 # Run all local static checks without launching interactive apps.
 smoke: audit verify-fish verify-layout
     @echo "smoke: OK"
+
+# Verify tooling required by event-driven loop workflows.
+audit-loop-tools:
+    @for t in entr fd rg; do command -v $$t >/dev/null 2>&1 || { echo "missing: $$t"; exit 1; }; done
+
+# Event-driven test loop (routes Python/Julia by changed file type).
+loop-test: audit-loop-tools
+    @bash scripts/dev-loop.sh test
+
+# Event-driven TODO/FIXME loop into nvim.
+loop-todo: audit-loop-tools
+    @bash scripts/dev-loop.sh todo
+
+# Event-driven compact git diff loop.
+loop-diff: audit-loop-tools
+    @bash scripts/dev-loop.sh diff

@@ -101,6 +101,18 @@ The `work` helper is defined in `fish/config.fish`.
 |---|---|
 | `delta` | enhanced syntax-highlighted diffs and pager output |
 | `bat` | syntax-highlighted `cat` replacement for previews and paging |
+| `jq` | JSON query and transform CLI |
+| `yq` | YAML/JSON/TOML query and transform CLI |
+| `fx` | interactive JSON explore/transform CLI |
+| `btm` | terminal system monitor (`bottom`) |
+| `cht.sh` | terminal cheat-sheet lookup client/service |
+| `tldr` | concise command examples and flag shapes |
+| `eza` | modern `ls` replacement |
+| `tokei` | language line-count and code stats |
+| `sd` | safe and fast bulk text replace |
+| `yazi` | terminal file manager |
+| `ncdu` | interactive disk-usage analyzer |
+| `entr` | filesystem-event driven command reruns |
 | `gh` | GitHub CLI for PR/issue/repo workflows |
 | `glow` | terminal markdown rendering |
 | `carbonyl` | terminal-first web browser for text-mode browsing |
@@ -119,6 +131,35 @@ The `work` helper is defined in `fish/config.fish`.
 | `just verify-layout` | ensure legacy layout file is gone + diff script parses |
 | `just smoke` | run all repo checks |
 | `just ssh-agent-status` | inspect SSH agent env + identities + service |
+| `just loop-test` | event-driven test loop (Python/Julia routed by file type) |
+| `just loop-todo` | event-driven TODO/FIXME loop into `nvim` |
+| `just loop-diff` | event-driven compact git diff loop |
+
+## Event-Driven Loops
+
+Prefer `entr` for filesystem-event driven loops; keep `watch` as polling fallback.
+
+```bash
+fd -e py -e toml -e yaml | entr -c pytest -q
+rg -l "TODO|FIXME" . | entr -c nvim
+```
+
+Project-root wrappers:
+
+```bash
+just loop-test
+just loop-todo
+just loop-diff
+```
+
+## Quick Command Recall
+
+Use both tools together: `cht.sh` for richer examples, `tldr` for fast flag-shape recall.
+
+```bash
+tldr tar
+tldr systemctl
+```
 
 ## Key Workflow Files
 
