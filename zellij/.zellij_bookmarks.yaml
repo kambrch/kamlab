@@ -1,0 +1,41 @@
+vars: {}
+
+cmds:
+  status: "cd /home/kamash/.config/kamlab && git status -sb"
+  diff: "cd /home/kamash/.config/kamlab && git diff --stat && echo && git diff"
+  plugins: "cd /home/kamash/.config/kamlab && zellij --config zellij/config.kdl list-aliases"
+  layout_check: "cd /home/kamash/.config/kamlab && just verify-layout"
+  smoke: "cd /home/kamash/.config/kamlab && just smoke"
+  dev_shell: "cd /home/kamash/.config/kamlab && fish"
+
+bookmarks:
+  repo-status:
+    desc: Show short git status for kamlab
+    labels: [git, repo]
+    cmds: [status]
+    exec: true
+  repo-diff:
+    desc: Show current patch/diff for kamlab
+    labels: [git, repo]
+    cmds: [diff]
+    exec: true
+  zellij-aliases:
+    desc: Print configured plugin aliases from zellij config
+    labels: [zellij, plugins]
+    cmds: [plugins]
+    exec: true
+  verify-layout:
+    desc: Ensure legacy dev layout stays removed and scripts parse
+    labels: [zellij, verify]
+    cmds: [layout_check]
+    exec: true
+  smoke-checks:
+    desc: Run local non-interactive validation checks
+    labels: [verify]
+    cmds: [smoke]
+    exec: true
+  repo-shell:
+    desc: Open an interactive fish shell at repo root
+    labels: [shell, repo]
+    cmds: [dev_shell]
+    exec: true

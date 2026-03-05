@@ -1,5 +1,9 @@
 git:
   autoFetch: true
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
+      useConfig: false
 customCommands:
   - key: "Y"
     context: "files"

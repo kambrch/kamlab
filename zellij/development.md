@@ -8,7 +8,7 @@ Open Zellij from a keybind, but choose the starting directory first.
 
 ## Recommendation
 
-Use a launcher script that prompts for a directory *before* starting Zellij, then `cd` into that directory and launch Zellij with your layout.
+Use a launcher script that prompts for a directory *before* starting Zellij, then `cd` into that directory and launch Zellij.
 
 This is the reliable approach because pane working directories are set when panes are spawned. A floating prompt inside Zellij appears too late to change the initial `cwd` of panes that already opened.
 
@@ -24,7 +24,7 @@ dir="$(find ~/code ~/work -maxdepth 3 -type d 2>/dev/null | fzf --prompt='Zellij
 [ -d "$dir" ] || exit 0
 
 cd "$dir"
-exec zellij --layout ~/.config/kamlab/zellij/layouts/dev.kdl
+exec zellij
 ```
 
 Make it executable:
@@ -42,7 +42,6 @@ bind = SUPER, Z, exec, kitty -e ~/bin/zellij-pick-dir
 ## Related Files In This Repo
 
 - Fish `dev` helper: `fish/functions/dev.fish`
-- Zellij layout: `zellij/layouts/dev.kdl`
 - DIFF pane script: `zellij/scripts/dev-diff-pane.sh`
 
 Note: `zellij/` is a submodule here, so changes under that directory are versioned in the submodule repository.

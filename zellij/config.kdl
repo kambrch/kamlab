@@ -366,7 +366,7 @@ load_plugins {
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-// default_shell "fish"
+default_shell "fish"
 
 // Choose the path to override cwd that zellij will use for opening new panes
 //
@@ -438,7 +438,7 @@ session_serialization false
 // Default: "default"
 // (Requires restart)
 //
-default_layout "dev"
+default_layout "default"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal

@@ -289,7 +289,7 @@ Current implementation in this repo:
 zellij/scripts/dev-diff-pane.sh
 ```
 
-The DIFF pane calls that script from `zellij/layouts/dev.kdl`. It handles a continuous refresh loop, uses `delta` when available, and falls back to plain colored `git diff`.
+The script runs as a standalone helper, uses `delta` when available, and falls back to plain colored `git diff`.
 
 Default behavior is **compact mode** (stats + file list). This is intentional so minified / very large diffs do not flood the small DIFF pane.
 
@@ -396,7 +396,6 @@ justfile
 scripts/dev-env-audit.sh
 templates/project/.envrc
 templates/project/justfile
-zellij/layouts/dev.kdl
 zellij/scripts/dev-diff-pane.sh
 ```
 
@@ -554,7 +553,6 @@ It is optimized for REPL-driven data engineering, patch-based AI collaboration, 
 - `dev` is implemented as `fish/functions/dev.fish` and avoids resurrecting exited sessions that trigger "Waiting to run" prompts
 - The root `justfile` provides local verification commands (`audit`, `verify-fish`, `verify-layout`, `smoke`)
 - `justfile` also provides `ssh-agent-status` for debugging SSH agent state
-- The Zellij dev layout is `zellij/layouts/dev.kdl` (inside the `zellij` submodule)
 - The DIFF pane helper script is `zellij/scripts/dev-diff-pane.sh` (inside the `zellij` submodule) and runs in compact mode by default
 
 This keeps the workflow spec in the README and the executable pieces close to the dotfiles that actually drive the session.

@@ -22,21 +22,14 @@ verify-fish:
     @fish -n fish/functions/dev.fish
     @echo "fish/functions/dev.fish: OK"
 
-# Verify zellij layout references and DIFF helper script in the submodule.
+# Verify legacy dev layout is removed and DIFF helper script still parses.
 verify-layout:
-    @test -f zellij/layouts/dev.kdl
-    @rg -n 'pane name=\"NVIM\"' zellij/layouts/dev.kdl >/dev/null
-    @rg -n 'pane name=\"AGENT\"' zellij/layouts/dev.kdl >/dev/null
-    @rg -n 'pane name=\"DIFF\"' zellij/layouts/dev.kdl >/dev/null
-    @rg -n 'pane name=\"GIT\"' zellij/layouts/dev.kdl >/dev/null
-    @rg -n 'pane name=\"AUX\"' zellij/layouts/dev.kdl >/dev/null
-    @if rg -n 'pane name=\"REPL / TESTS\"' zellij/layouts/dev.kdl >/dev/null; then \
-      echo "verify-layout: unexpected REPL / TESTS pane present"; \
+    @if test -f zellij/layouts/dev.kdl; then \
+      echo "verify-layout: zellij/layouts/dev.kdl should be removed"; \
       exit 1; \
     fi
-    @rg -n 'dev-diff-pane\.sh' zellij/layouts/dev.kdl >/dev/null
     @bash -n zellij/scripts/dev-diff-pane.sh
-    @echo "zellij layout + diff script: OK"
+    @echo "zellij legacy layout removed + diff script: OK"
 
 # Run all local static checks without launching interactive apps.
 smoke: audit verify-fish verify-layout
