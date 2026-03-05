@@ -554,5 +554,14 @@ It is optimized for REPL-driven data engineering, patch-based AI collaboration, 
 - The root `justfile` provides local verification commands (`audit`, `verify-fish`, `verify-layout`, `smoke`)
 - `justfile` also provides `ssh-agent-status` for debugging SSH agent state
 - The DIFF pane helper script is `zellij/scripts/dev-diff-pane.sh` (inside the `zellij` submodule) and runs in compact mode by default
+- `fish/config.fish` includes a cached fallback prompt with Git branch/dirty metadata (Starship still overrides prompt when installed)
+- `fish/functions/take.fish`: `take <dir>` creates and enters a directory safely
+- `fish/functions/f.fish`: fuzzy file opener using `fd + fzf` with `bat` preview and heavy-path excludes (`.git`, `node_modules`, `.venv`, `dist`, `target`)
+- `fish/functions/gwt.fish`: safe Git worktree helper, including `gwt -r <branch>` to base from `origin/<branch>` when local branch is missing
+- `fish/functions/gap.fish` and `fish/functions/gap3.fish`: patch applicability checks for `.zellij/patches/current.patch` with explicit errors
+- `fish/functions/work.fish`: zoxide-aware project jump + `zellij attach -c` using prefixed session names (`wrk_<project>`)
+- `fish/functions/doctor.fish`: one-shot local health check (`fish -n`, `zellij setup --check`, required tool presence)
+- `fish/completions/gwt.fish` and `fish/completions/work.fish` provide shell completions for custom helpers
+- `zellij/config.kdl` uses `copy_command "/home/kamash/.config/kamlab/zellij/scripts/copy-clipboard.sh"` for clipboard fallback across Wayland/X11/macOS (`wl-copy` → `xclip` → `pbcopy`)
 
 This keeps the workflow spec in the README and the executable pieces close to the dotfiles that actually drive the session.

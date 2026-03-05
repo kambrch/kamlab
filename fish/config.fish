@@ -1,9 +1,29 @@
-function fish_prompt -d "Write out the prompt"
-    # This shows up as USER@HOST /home/user/ >, with the directory colored
-    # $USER and $hostname are set by fish, so you can just use them
-    # instead of using `whoami` and `hostname`
-    printf '%s@%s %s%s%s > ' $USER $hostname \
-        (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+function __kamlab_git_prompt_info --description "Return cached git prompt metadata for current directory"
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1; or return 0
+
+    set -l branch (git rev-parse --abbrev-ref HEAD 2>/dev/null); or return 0
+    if test "$branch" = "HEAD"
+        set branch (git rev-parse --short HEAD 2>/dev/null); or return 0
+    end
+
+    set -l dirty ""
+    git diff --no-ext-diff --quiet --ignore-submodules HEAD -- >/dev/null 2>&1
+    or set dirty "*"
+    echo "$branch$dirty"
+end
+
+function fish_prompt -d "Fallback prompt (starship overrides this when installed)"
+    set -l cwd (pwd)
+    if test "$cwd" != "$__kamlab_prompt_cache_pwd"
+        set -g __kamlab_prompt_cache_pwd "$cwd"
+        set -g __kamlab_prompt_cache_git (__kamlab_git_prompt_info)
+    end
+
+    printf '%s@%s %s%s%s' $USER $hostname (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+    if test -n "$__kamlab_prompt_cache_git"
+        printf ' %s(%s)%s' (set_color yellow) "$__kamlab_prompt_cache_git" (set_color normal)
+    end
+    printf ' > '
 end
 
 if status is-interactive # Commands to run in interactive sessions can go here
@@ -32,8 +52,6 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias gdc 'git diff --cached --color=always | delta'
     alias gl 'git log --oneline --graph --decorate --all'
     alias ga 'git add -A'
-    alias gap 'git apply --check .zellij/patches/current.patch'
-    alias gap3 'git apply --3way --check .zellij/patches/current.patch'
     alias zj 'zellij'
     alias v 'nvim'
     alias k 'kitty @'
@@ -63,12 +81,19 @@ function work --description "Jump to a project (via z when available) and attach
 
     if test (count $argv) -gt 0
         if functions -q z
-            z $argv[1]
+            z "$argv[1]"
         else
-            cd $argv[1]
+            cd -- "$argv[1]"
         end
     end
 
-    set -l session (basename (pwd) | string replace -ar '[^A-Za-z0-9_.-]' '_')
-    zellij attach -c $session
+    if not type -q zellij
+        echo "work: missing dependency: zellij" >&2
+        return 1
+    end
+
+    set -l raw_name (basename (pwd) | string replace -ar '[^A-Za-z0-9_.-]' '_')
+    set -l session_name (string sub -s 1 -l 48 -- "$raw_name")
+    set -l session "wrk_$session_name"
+    zellij attach -c -- "$session"
 end
