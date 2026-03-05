@@ -17,6 +17,7 @@ optional_tools=(
   gh
   glow
   matugen
+  bat
   delta
   watch
   uv

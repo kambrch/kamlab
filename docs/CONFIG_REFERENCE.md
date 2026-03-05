@@ -27,6 +27,7 @@ This repo manages terminal-centric development config for:
 | `lazygit/` | Git TUI defaults + patch workflow shortcuts |
 | `gh/` | GitHub CLI configuration |
 | `git/` | Git global ignore bootstrap snippets |
+| `bat/` | Bat pager/highlighter defaults |
 | `glow/` | Glow markdown viewer configuration |
 | `matugen/` | Matugen theme templates and generation config |
 | `zshrc.d/` | Zsh snippets kept alongside Fish-first setup |
@@ -186,12 +187,37 @@ Behavior:
 Primary file:
 
 - `git/ignore`
+- `git/delta.gitconfig`
 
 Behavior:
 
 - documents/bootstraps global excludesfile usage:
   `git config --global core.excludesfile ~/.config/git/ignore`
 - stores host-level ignore patterns (for example `**/.claude/settings.local.json`)
+- provides reusable `git-delta` configuration include
+
+To enable delta settings globally:
+
+```bash
+git config --global include.path ~/.config/kamlab/git/delta.gitconfig
+```
+
+## Bat (`bat/`)
+
+Primary file:
+
+- `bat/config`
+
+Behavior:
+
+- sets default display style/paging for `bat` previews in terminal workflows
+
+To enable:
+
+```bash
+mkdir -p ~/.config/bat
+ln -sf ~/.config/kamlab/bat/config ~/.config/bat/config
+```
 
 ## Glow (`glow/`)
 
@@ -245,7 +271,7 @@ Behavior:
 
 - OS and likely package manager
 - required tools (`zellij`, `direnv`, `just`, `zoxide`, `ghq`, `rg`, `fd`, `fzf`, `lazygit`)
-- optional tools (`gh`, `glow`, `matugen`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
+- optional tools (`gh`, `glow`, `matugen`, `bat`, `delta`, `watch`, `uv`, `mise`, `juliaup`)
 
 ### User service
 

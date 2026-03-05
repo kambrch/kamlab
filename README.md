@@ -69,6 +69,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `lazygit/` | git TUI defaults and patch commands |
 | `gh/` | GitHub CLI configuration |
 | `git/` | global Git ignore snippets/bootstrap |
+| `bat/` | bat pager/highlighter defaults |
 | `glow/` | Glow markdown viewer preferences |
 | `matugen/` | wallpaper-driven color generation templates/config |
 | `zshrc.d/` | legacy/shared Zsh snippets (Hyprland + shortcuts) |
@@ -97,6 +98,7 @@ The `work` helper is defined in `fish/config.fish`.
 | Tool | Role |
 |---|---|
 | `delta` | enhanced syntax-highlighted diffs and pager output |
+| `bat` | syntax-highlighted `cat` replacement for previews and paging |
 | `gh` | GitHub CLI for PR/issue/repo workflows |
 | `glow` | terminal markdown rendering |
 | `matugen` | generate and apply UI/system color palettes |
