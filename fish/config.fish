@@ -72,12 +72,15 @@ if status is-interactive # Commands to run in interactive sessions can go here
     alias codex 'codex --no-alt-screen'
     alias claude 'claude'
 
-    # Safe-by-default file operation abbreviations.
-    # Expands when typed as the command token (e.g. `rm<space>` -> `rm -Iv `).
-    abbr --add --position command rm 'rm -Iv'
-    abbr --add --position command cp 'cp -iv'
-    abbr --add --position command mv 'mv -iv'
-    abbr --add --position command ln 'ln -iv'
+    # Safe-by-default file operations.
+    # Aliases ensure the flags apply even without abbreviation expansion.
+    alias rm 'rm -Iv'
+    alias cp 'cp -iv'
+    alias mv 'mv -iv'
+    alias ln 'ln -iv'
+    for op in rm cp mv ln
+        abbr --erase $op 2>/dev/null
+    end
 
 end
 
