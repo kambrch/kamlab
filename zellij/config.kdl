@@ -432,7 +432,7 @@ session_serialization false
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-// theme "default"
+theme "matugen" // MATUGEN_MANAGED
 
 // The name of the default layout to load on startup
 // Default: "default"
@@ -509,7 +509,7 @@ scrollback_editor "nvim"
 // The folder in which Zellij will look for themes
 // (Requires restart)
 //
-// theme_dir "/path/to/my/theme_dir"
+theme_dir "/home/kamash/.config/kamlab/zellij/themes"
 
 // Enable or disable the rendering of styled and colored underlines (undercurl).
 // May need to be disabled for certain unsupported terminals

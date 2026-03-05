@@ -32,3 +32,27 @@ output_path = '~/.local/state/quickshell/user/generated/color.txt'
 [templates.wallpaper]
 input_path = '~/.config/matugen/templates/wallpaper.txt'
 output_path = '~/.local/state/quickshell/user/generated/wallpaper/path.txt'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty/matugen.conf'
+output_path = '~/.config/kitty/matugen.conf'
+
+[templates.delta_theme]
+input_path = '~/.config/matugen/templates/git/delta-theme.gitconfig'
+output_path = '~/.config/git/delta-theme.gitconfig'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship/matugen.toml'
+output_path = '~/.config/starship-matugen.toml'
+
+[templates.nvim]
+input_path = '~/.config/matugen/templates/nvim/matugen.lua'
+output_path = '~/.local/state/quickshell/user/generated/nvim/matugen.lua'
+
+[templates.fish]
+input_path = '~/.config/matugen/templates/fish/matugen-colors.fish'
+output_path = '~/.local/state/quickshell/user/generated/fish/matugen-colors.fish'
+
+[templates.zellij]
+input_path = '~/.config/matugen/templates/zellij/matugen.kdl'
+output_path = '~/.config/kamlab/zellij/themes/matugen.kdl'

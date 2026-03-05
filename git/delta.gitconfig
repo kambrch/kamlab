@@ -23,3 +23,7 @@
 
 [merge]
     conflictstyle = zdiff3
+
+[include]
+    # Optional Matugen-generated override. Safe to keep when file is absent.
+    path = ~/.config/git/delta-theme.gitconfig

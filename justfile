@@ -51,3 +51,7 @@ loop-todo: audit-loop-tools
 # Event-driven compact git diff loop.
 loop-diff: audit-loop-tools
     @bash scripts/dev-loop.sh diff
+
+# Regenerate Zellij Matugen theme from generated colors.json.
+sync-zellij-theme:
+    @bash scripts/sync-zellij-theme.sh

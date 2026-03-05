@@ -34,6 +34,33 @@ if vim.bo.filetype == "python" then
   refresh_python_host_prog()
 end
 
+-- Optional Matugen overlay for core highlights.
+-- Recovery switch: export KAMLAB_MATUGEN_DISABLE=1 before launching nvim.
+local function apply_matugen_theme()
+  if vim.env.KAMLAB_MATUGEN_DISABLE == "1" then
+    return
+  end
+  if vim.fn.filereadable(vim.fn.expand "~/.config/kamlab/.matugen-disabled") == 1 then
+    return
+  end
+
+  local matugen_file = vim.fn.expand "~/.local/state/quickshell/user/generated/nvim/matugen.lua"
+  if vim.fn.filereadable(matugen_file) ~= 1 then
+    return
+  end
+
+  local ok_mod, mod = pcall(dofile, matugen_file)
+  if ok_mod and type(mod) == "table" and type(mod.apply) == "function" then
+    pcall(mod.apply)
+  end
+end
+
+apply_matugen_theme()
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = apply_matugen_theme,
+  desc = "Apply optional Matugen highlight overlay",
+})
+
 -- Enable spell checking for specific file types
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "text", "markdown", "md", "tex", "latex", "plaintex", "rst", "asciidoc", "org", "mail" },

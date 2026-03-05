@@ -31,6 +31,17 @@ if status is-interactive # Commands to run in interactive sessions can go here
     # No greeting
     set fish_greeting
 
+    # Optional Matugen-generated overlays.
+    # Recovery switch: set KAMLAB_MATUGEN_DISABLE=1 to ignore generated theme files.
+    if test "$KAMLAB_MATUGEN_DISABLE" != "1"; and not test -f ~/.config/kamlab/.matugen-disabled
+        if test -f ~/.config/starship-matugen.toml
+            set -gx STARSHIP_CONFIG ~/.config/starship-matugen.toml
+        end
+        if test -f ~/.local/state/quickshell/user/generated/fish/matugen-colors.fish
+            source ~/.local/state/quickshell/user/generated/fish/matugen-colors.fish
+        end
+    end
+
     # Use starship
     if type -q starship
         starship init fish | source
