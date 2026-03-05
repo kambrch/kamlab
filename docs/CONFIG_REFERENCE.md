@@ -34,6 +34,7 @@ This repo manages terminal-centric development config for:
 | `carbonyl/` | Carbonyl usage and integration notes |
 | `matugen/` | Matugen theme templates and generation config |
 | `zshrc.d/` | Zsh snippets kept alongside Fish-first setup |
+| `zellij/themes/` | Matugen-aware Zellij theme definitions |
 | `scripts/` | Host/tooling audit helpers |
 | `templates/project/` | Starter `.envrc` + `justfile` for new projects |
 | `systemd/user/` | User services (currently SSH agent) |
@@ -271,6 +272,34 @@ Behavior:
 
 - maps generated palette outputs into Hyprland, Hyprlock, Fuzzel, GTK, and Quickshell paths
 - keeps template artifacts versioned in-repo
+
+Additional generated integration targets:
+
+- `~/.config/kitty/matugen.conf` (Kitty overlay)
+- `~/.config/git/delta-theme.gitconfig` (Delta override include)
+- `~/.config/starship-matugen.toml` (Starship config overlay)
+- `~/.local/state/quickshell/user/generated/nvim/matugen.lua` (Nvim highlights)
+- `~/.local/state/quickshell/user/generated/fish/matugen-colors.fish` (Fish colors)
+- `~/.config/kamlab/zellij/themes/matugen.kdl` (Zellij theme)
+
+`zellij/themes/matugen.kdl` is synchronized from generated `colors.json` using:
+
+```bash
+just sync-zellij-theme
+```
+
+### Matugen Recovery Controls
+
+Scripted toggle:
+
+```bash
+bash ~/.config/kamlab/scripts/matugen-mode.sh off
+bash ~/.config/kamlab/scripts/matugen-mode.sh on
+bash ~/.config/kamlab/scripts/matugen-mode.sh status
+```
+
+The toggle creates/removes `~/.config/kamlab/.matugen-disabled` and switches managed lines in Kitty/Zellij.
+Shell and Nvim overlays also honor `KAMLAB_MATUGEN_DISABLE=1`.
 
 ## Zsh Snippets (`zshrc.d/`)
 

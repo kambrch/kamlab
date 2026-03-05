@@ -78,6 +78,7 @@ The `work` helper is defined in `fish/config.fish`.
 | `scripts/` | host/tooling audit scripts |
 | `templates/project/` | starter `.envrc` + `justfile` |
 | `systemd/user/` | user-level services (`ssh-agent`) |
+| `zellij/themes/` | Matugen-aware Zellij theme file |
 
 ## Tool Roles
 
@@ -159,6 +160,36 @@ Use both tools together: `cht.sh` for richer examples, `tldr` for fast flag-shap
 ```bash
 tldr tar
 tldr systemctl
+```
+
+## Matugen Coverage
+
+Matugen-driven theming is wired for:
+
+- `kitty` via `globinclude ~/.config/kitty/matugen.conf`
+- `git-delta` via `~/.config/git/delta-theme.gitconfig` include
+- `starship` via `~/.config/starship-matugen.toml`
+- `nvim` highlight overlay via generated Lua module
+- `zellij` theme (`matugen`) via `zellij/themes/matugen.kdl`
+- `fish` syntax colors via generated fish color file
+
+`zellij/themes/matugen.kdl` is generated from `~/.local/state/quickshell/user/generated/colors.json`
+via `scripts/sync-zellij-theme.sh` (or `just sync-zellij-theme`).
+
+## Matugen Recovery
+
+Fast toggle:
+
+```bash
+bash ~/.config/kamlab/scripts/matugen-mode.sh off
+bash ~/.config/kamlab/scripts/matugen-mode.sh on
+bash ~/.config/kamlab/scripts/matugen-mode.sh status
+```
+
+Environment override (shell/nvim overlays):
+
+```bash
+export KAMLAB_MATUGEN_DISABLE=1
 ```
 
 ## Key Workflow Files
